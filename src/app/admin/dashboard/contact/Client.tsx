@@ -6,8 +6,14 @@ import { useSave } from '@/hooks/useSave'
 
 export default function Client({ initial }: { initial: ContactData }) {
   const [contact, setContact] = useState<ContactData>({
-    heading: '', subheading: '', email: '', phone: '', location: '',
-    calendly_url: '', show_form: true, ...initial
+    id: initial.id,
+    heading: initial.heading || '',
+    subheading: initial.subheading || '',
+    email: initial.email || '',
+    phone: initial.phone || '',
+    location: initial.location || '',
+    calendly_url: initial.calendly_url || '',
+    show_form: initial.show_form ?? true
   })
   const { save, loading, status } = useSave('contact')
   const set = (field: keyof ContactData) => (val: string | boolean) =>
