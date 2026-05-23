@@ -25,7 +25,7 @@ export default function Client({ initial }: { initial: StatsData }) {
           {fields.map(f => (
             <div key={f.key}>
               <AdminLabel>{f.label}</AdminLabel>
-              <AdminInput value={stats[f.key]} onChange={set(f.key)} type="number" />
+              <AdminInput value={stats[f.key] || 0} onChange={set(f.key)} type="number" />
               <p style={{fontSize:'0.72rem',color:'var(--text3)',marginTop:5}}>{f.desc}</p>
             </div>
           ))}
