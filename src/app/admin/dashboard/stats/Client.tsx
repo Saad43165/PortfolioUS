@@ -7,10 +7,10 @@ import { useSave } from '@/hooks/useSave'
 export default function Client({ initial }: { initial: StatsData }) {
   const [stats, setStats] = useState<StatsData>(initial)
   const { save, loading, status } = useSave('stats')
-  const set = (field: keyof StatsData) => (val: string) =>
+  const set = (field: Exclude<keyof StatsData, 'id'>) => (val: string) =>
     setStats(prev => ({ ...prev, [field]: parseInt(val) || 0 }))
 
-  const fields: { label: string; key: keyof StatsData; desc: string }[] = [
+  const fields: { label: string; key: Exclude<keyof StatsData, 'id'>; desc: string }[] = [
     { label: 'Projects Completed', key: 'projects_completed', desc: 'Shows as "42+" in hero' },
     { label: 'Years of Experience', key: 'years_experience', desc: 'Shows as "4+" in hero' },
     { label: 'Happy Clients', key: 'happy_clients', desc: 'Shows as "28+" in hero' },

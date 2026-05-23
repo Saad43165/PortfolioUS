@@ -131,3 +131,4 @@ See the **Setup** page inside the admin dashboard for step-by-step SQL and instr
 | Fonts | Cormorant Garamond + Syne + JetBrains Mono |
 | Deployment | Vercel |
 "# portfolio" 
+"# portfolio" 
