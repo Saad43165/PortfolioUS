@@ -1,5 +1,3 @@
-'use client'
-
 import { useState, useCallback } from 'react'
 
 type SaveStatus = 'idle' | 'saving' | 'success' | 'error'
