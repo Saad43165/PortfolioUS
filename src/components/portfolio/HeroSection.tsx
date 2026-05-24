@@ -8,6 +8,26 @@ export default function HeroSection({ hero, stats }: { hero: HeroData; stats: St
   const lastName  = hero.name.split(' ').slice(1).join(' ')
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
+  const getFileExtension = (url: string) => {
+    if (!url) return 'pdf'
+    if (url.startsWith('data:')) {
+      const mime = url.split(';')[0].split(':')[1]
+      if (mime === 'application/pdf') return 'pdf'
+      if (mime === 'application/msword') return 'doc'
+      if (mime === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') return 'docx'
+      const part = mime.split('/')[1]
+      return part === 'octet-stream' ? 'pdf' : part || 'pdf'
+    }
+    try {
+      const cleanUrl = url.split('?')[0].split('#')[0]
+      const ext = cleanUrl.substring(cleanUrl.lastIndexOf('.') + 1).toLowerCase()
+      if (ext && ext.length <= 4) return ext
+    } catch {}
+    return 'pdf'
+  }
+
+  const cvExtension = getFileExtension(hero.cv_url)
+
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -97,7 +117,7 @@ export default function HeroSection({ hero, stats }: { hero: HeroData; stats: St
           {hero.cv_url && (
             <a 
               href={hero.cv_url} 
-              download={`${hero.name.replace(/\s+/g, '_')}_CV.pdf`}
+              download={`${hero.name.replace(/\s+/g, '_')}_CV.${cvExtension}`}
               target="_blank"
               rel="noopener noreferrer"
               className="h-btn-cv" 
