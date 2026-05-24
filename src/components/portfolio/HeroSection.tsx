@@ -94,6 +94,33 @@ export default function HeroSection({ hero, stats }: { hero: HeroData; stats: St
           <a href={hero.cta_secondary_link} className="h-btn-secondary" style={{ background:'transparent', color:'var(--text)', padding:'16px 44px', borderRadius:'50px', fontSize:'0.95rem', fontWeight:500, textDecoration:'none', border:'1px solid var(--border2)', letterSpacing:'0.02em', transition:'all 0.3s var(--ease)', backdropFilter:'blur(8px)' }}>
             {hero.cta_secondary_text}
           </a>
+          {hero.cv_url && (
+            <a 
+              href={hero.cv_url} 
+              download={`${hero.name.replace(/\s+/g, '_')}_CV.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-btn-cv" 
+              style={{ 
+                background:'rgba(217,70,239,0.05)', 
+                color:'var(--accent3)', 
+                padding:'16px 44px', 
+                borderRadius:'50px', 
+                fontSize:'0.95rem', 
+                fontWeight:600, 
+                textDecoration:'none', 
+                border:'1px dashed rgba(217,70,239,0.3)', 
+                letterSpacing:'0.02em', 
+                transition:'all 0.3s var(--ease)', 
+                backdropFilter:'blur(8px)',
+                display:'inline-flex',
+                alignItems:'center',
+                gap:8
+              }}
+            >
+              ↓ Download CV
+            </a>
+          )}
         </div>
 
         {/* Stats */}
@@ -121,6 +148,7 @@ export default function HeroSection({ hero, stats }: { hero: HeroData; stats: St
         @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
         .h-btn-primary:hover {transform:translateY(-3px)!important;box-shadow:0 16px 48px var(--glow)!important}
         .h-btn-secondary:hover{background:var(--surface)!important;border-color:var(--accent)!important;transform:translateY(-3px)!important}
+        .h-btn-cv:hover{background:rgba(217,70,239,0.12)!important;border-color:var(--accent3)!important;transform:translateY(-3px)!important;box-shadow:0 8px 24px rgba(217,70,239,0.15)!important}
         .hero-stat:hover{background:var(--surface2)!important}
         @media(max-width:768px){#home{padding:100px 20px 60px!important}.hero-stats{grid-template-columns:1fr 1fr!important;margin-top:48px!important}}
       `}</style>

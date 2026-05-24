@@ -5,12 +5,15 @@ import type { HeroData } from '@/types'
 import {
   AdminPageHeader, AdminCard, AdminGrid, Field,
   AdminToggle, AdminLabel, AdminInput, SaveButton,
-  AdminImageUpload,
+  AdminImageUpload, AdminFileUpload,
 } from '@/components/admin/AdminFields'
 import { useSave } from '@/hooks/useSave'
 
 export default function HeroAdminClient({ initial }: { initial: HeroData }) {
-  const [hero, setHero] = useState<HeroData>(initial)
+  const [hero, setHero] = useState<HeroData>({
+    ...initial,
+    cv_url: initial.cv_url || '',
+  })
   const { save, loading, status } = useSave('hero')
   const set = (field: keyof HeroData) => (val: string | boolean) =>
     setHero(prev => ({ ...prev, [field]: val }))
@@ -36,6 +39,13 @@ export default function HeroAdminClient({ initial }: { initial: HeroData }) {
           <Field label="Secondary Button Text" value={hero.cta_secondary_text} onChange={set('cta_secondary_text') as (v:string)=>void} placeholder="Get in Touch" />
           <Field label="Secondary Button Link" value={hero.cta_secondary_link} onChange={set('cta_secondary_link') as (v:string)=>void} placeholder="#contact" />
         </AdminGrid>
+      </AdminCard>
+
+      <AdminCard title="Curriculum Vitae (CV)">
+        <div>
+          <AdminFileUpload value={hero.cv_url || ''} onChange={set('cv_url') as (v:string)=>void} label="Upload CV Document (PDF, DOCX)" />
+          <AdminInput value={hero.cv_url || ''} onChange={set('cv_url') as (v:string)=>void} placeholder="Or paste external resume/CV URL here..." />
+        </div>
       </AdminCard>
 
       <AdminCard title="Profile Avatar">

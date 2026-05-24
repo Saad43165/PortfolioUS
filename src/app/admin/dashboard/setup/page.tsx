@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS hero (
   cta_secondary_text TEXT DEFAULT 'Get in Touch',
   cta_secondary_link TEXT DEFAULT '#contact',
   avatar_url TEXT DEFAULT '',
-  available_for_work BOOLEAN DEFAULT true
+  available_for_work BOOLEAN DEFAULT true,
+  cv_url TEXT DEFAULT ''
 );
 
 CREATE TABLE IF NOT EXISTS about (

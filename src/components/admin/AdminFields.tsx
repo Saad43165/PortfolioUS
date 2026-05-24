@@ -209,6 +209,53 @@ export function AdminImageUpload({ value, onChange, label = "Image Upload" }: {
   )
 }
 
+// ── File Upload (PDF/CV) ───────────────────────────────────────
+export function AdminFileUpload({ value, onChange, label = "File Upload" }: {
+  value: string; onChange: (v: string) => void; label?: string
+}) {
+  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    if (file.size > 3 * 1024 * 1024) {
+      alert("Please upload a file smaller than 3MB.")
+      return
+    }
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      if (event.target?.result) {
+        onChange(event.target.result as string)
+      }
+    }
+    reader.readAsDataURL(file)
+  }
+
+  const hasFile = value && value.startsWith('data:')
+
+  return (
+    <div style={{ marginTop: 12 }}>
+      <AdminLabel>{label}</AdminLabel>
+      <input 
+        type="file" 
+        accept=".pdf,.doc,.docx" 
+        onChange={handleFile} 
+        style={{
+          display: 'block', width: '100%', padding: '10px 0',
+          color: 'var(--text2)', fontSize: '0.88rem',
+          fontFamily: 'var(--font-body)'
+        }}
+      />
+      {hasFile && (
+        <div style={{ fontSize: '0.82rem', color: 'var(--success)', marginTop: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+          ✓ CV File uploaded successfully ({value.length > 100000 ? `${Math.round(value.length / 1333)} KB` : 'Base64'})
+        </div>
+      )}
+      <div style={{ fontSize: '0.75rem', color: 'var(--text3)', marginTop: 4 }}>
+        Alternatively, provide a URL below:
+      </div>
+    </div>
+  )
+}
+
 // ── Save Button ────────────────────────────────────────────────
 export function SaveButton({ onClick, loading, status }: {
   onClick: () => void

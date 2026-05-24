@@ -10,6 +10,7 @@ export interface HeroData {
   avatar_url: string
   available_for_work: boolean
   tagline_badge?: string       // optional custom badge text
+  cv_url: string
 }
 
 export interface AboutData {

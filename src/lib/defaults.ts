@@ -11,6 +11,7 @@ export const DEFAULT_DATA: PortfolioData = {
     cta_secondary_link: '#contact',
     avatar_url: '',
     available_for_work: true,
+    cv_url: '',
   },
   about: {
     bio: "I'm a full-stack developer with a deep love for clean code and purposeful design. I specialize in building modern web applications that are performant, accessible, and beautifully crafted. With experience spanning startups to enterprise, I bring both technical depth and creative clarity to every project.",
