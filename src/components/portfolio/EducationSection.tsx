@@ -11,7 +11,7 @@ export default function EducationSection({ education }: { education: Education[]
         <div style={{ display:'flex', flexDirection:'column', gap:20 }}>
           {education.map((edu, i) => (
             <Reveal key={edu.id} delay={i * 80}>
-              <div className="edu-card" style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:'30px 32px', display:'grid', gridTemplateColumns:'64px 1fr auto', gap:24, alignItems:'start', transition:'all 0.35s var(--ease)', position:'relative', overflow:'hidden' }}>
+              <div className="edu-card" style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', boxShadow:'var(--card-shadow)', padding:'30px 32px', display:'grid', gridTemplateColumns:'64px 1fr auto', gap:24, alignItems:'start', transition:'all 0.35s var(--ease)', position:'relative', overflow:'hidden' }}>
                 {/* Left accent bar */}
                 <div style={{ position:'absolute', left:0, top:0, bottom:0, width:3, background:'linear-gradient(180deg, var(--accent), var(--accent3))', borderRadius:'3px 0 0 3px' }} />
 
@@ -48,7 +48,7 @@ export default function EducationSection({ education }: { education: Education[]
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        .edu-card:hover { border-color:var(--border2)!important; transform:translateX(5px)!important; box-shadow:0 8px 40px rgba(0,0,0,0.25)!important; }
+        .edu-card:hover { border-color:var(--border2)!important; transform:translateX(5px)!important; box-shadow:var(--card-shadow-hover)!important; }
         @media(max-width:640px){
           .edu-card { grid-template-columns:48px 1fr!important; padding:22px 20px!important; }
           .edu-card > div:last-child { grid-column:1/-1; margin-top:4px; }

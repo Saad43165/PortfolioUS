@@ -3,27 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --bg:        #05050f;
-  --bg2:       #080816;
-  --bg3:       #0c0c20;
-  --surface:   #0f0f24;
-  --surface2:  #141430;
-  --surface3:  #1a1a3a;
-  --border:    rgba(100,80,240,0.12);
-  --border2:   rgba(100,80,240,0.25);
-  --border3:   rgba(100,80,240,0.45);
-  --accent:    #6450f0;
-  --accent2:   #9b8ff7;
-  --accent3:   #d946ef;
-  --accent4:   #06b6d4;
-  --gold:      #f59e0b;
-  --success:   #10b981;
-  --danger:    #ef4444;
-  --glow:      rgba(100,80,240,0.35);
-  --glow2:     rgba(217,70,239,0.25);
-  --text:      #eeeaff;
-  --text2:     #9b96cc;
-  --text3:     #5e5a8a;
+  /* Dynamic Variables to support Light/Dark transitions */
   --font-display: 'Cormorant Garamond';
   --font-body:    'Syne';
   --font-mono:    'JetBrains Mono';
@@ -32,7 +12,66 @@
   --radius-xs: 6px;
   --ease:      cubic-bezier(0.16,1,0.3,1);
   --transition:all 0.45s var(--ease);
+
+  /* Enhanced Dark Theme (Default) */
+  --bg:        #05050f;
+  --bg2:       #080816;
+  --bg3:       #0c0c20;
+  --surface:   #0f0f26;
+  --surface2:  #141436;
+  --surface3:  #1d1d4d;
+  --border:    rgba(130, 115, 255, 0.16);
+  --border2:   rgba(130, 115, 255, 0.28);
+  --border3:   rgba(130, 115, 255, 0.5);
+  --accent:    #6450f0;
+  --accent2:   #9b8ff7;
+  --accent3:   #d946ef;
+  --accent4:   #06b6d4;
+  --gold:      #f59e0b;
+  --success:   #10b981;
+  --danger:    #ef4444;
+  --glow:      rgba(100, 80, 240, 0.35);
+  --glow2:     rgba(217, 70, 239, 0.25);
+  --text:      #ffffff; /* Maximum crisp pure white */
+  --text2:     #c4bfdf; /* Highly readable secondary lavender-slate text */
+  --text3:     #9a96c3; /* Exceptionally legible tertiary description and tag text */
+  --noise-opacity: 0.18;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 0 24px 60px rgba(0, 0, 0, 0.45);
+  --nav-bg: rgba(5, 5, 15, 0.92);
+  --mobile-nav-bg: rgba(5, 5, 15, 0.97);
 }
+
+/* Premium Light Theme Override */
+html[data-theme='light'] {
+  --bg:        #f4f5fc; /* Clean slate-tinted off-white background */
+  --bg2:       #eaecef; /* Muted background borders/sections */
+  --bg3:       #dfe2eb; /* Input fields background */
+  --surface:   #ffffff; /* Elegant pure white cards */
+  --surface2:  #f0f2fb; /* Lavender tinted light grey */
+  --surface3:  #e3e6f5; /* Light grey highlights */
+  --border:    rgba(80, 60, 210, 0.08); /* Soft slate border */
+  --border2:   rgba(80, 60, 210, 0.16); /* Muted slate border */
+  --border3:   rgba(80, 60, 210, 0.35); /* Focus state border */
+  --accent:    #5840d8; /* Rich purple accent for perfect contrast in light mode */
+  --accent2:   #755cf0; /* Mid purple */
+  --accent3:   #c12db5; /* Deep pink/magenta */
+  --accent4:   #0891b2; /* Muted cyan */
+  --gold:      #d97706; /* Rich warm gold */
+  --success:   #059669; /* Elegant deep green */
+  --danger:    #dc2626; /* Warning red */
+  --glow:      rgba(88, 64, 216, 0.12); /* Delicate drop shadows */
+  --glow2:     rgba(193, 45, 181, 0.08);
+  --text:      #0b0b1a; /* Sleek rich dark slate-blue */
+  --text2:     #4a4b6b; /* Muted primary reading gray */
+  --text3:     #737599; /* Readable captions, labels, metadata */
+  --noise-opacity: 0.08; /* Subtler noise on light backgrounds */
+  --card-shadow: 0 8px 30px rgba(80, 60, 210, 0.03), 0 2px 8px rgba(80, 60, 210, 0.02);
+  --card-shadow-hover: 0 20px 48px rgba(80, 60, 210, 0.08), 0 4px 16px rgba(80, 60, 210, 0.04);
+  --nav-bg: rgba(244, 245, 252, 0.92);
+  --mobile-nav-bg: rgba(244, 245, 252, 0.97);
+}
+
 
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 
@@ -51,6 +90,7 @@ body {
   font-size: 16px;
   line-height: 1.7;
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Scrollbar */
@@ -85,7 +125,7 @@ img { max-width:100%; }
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.45;
+  opacity: var(--noise-opacity);
 }
 
 /* ── PAGE TRANSITION ── */

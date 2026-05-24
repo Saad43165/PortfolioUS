@@ -22,6 +22,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
                 background: 'var(--surface)',
                 border: '1px solid var(--border)',
                 borderRadius: 'var(--radius)',
+                boxShadow: 'var(--card-shadow)',
                 overflow: 'hidden',
                 display: 'flex', flexDirection: 'column',
                 height: '100%',
@@ -128,7 +129,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
         .project-card:hover {
           border-color: var(--border2) !important;
           transform: translateY(-6px) !important;
-          box-shadow: 0 24px 60px rgba(0,0,0,0.4) !important;
+          box-shadow: var(--card-shadow-hover) !important;
         }
         .project-card:hover .project-overlay { opacity: 1 !important; }
         @media (max-width: 768px) {

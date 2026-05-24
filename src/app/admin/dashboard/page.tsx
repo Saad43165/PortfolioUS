@@ -40,7 +40,7 @@ export default async function AdminOverviewPage() {
       <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(160px, 1fr))', gap:14, marginBottom:32 }}>
         {statCards.map(card => (
           <Link key={card.label} href={card.href} style={{ textDecoration:'none' }}>
-            <div className="overview-card" style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:'22px 18px', textAlign:'center', transition:'all 0.3s ease', cursor:'pointer' }}>
+            <div className="overview-card" style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', boxShadow:'var(--card-shadow)', padding:'22px 18px', textAlign:'center', transition:'all 0.3s ease', cursor:'pointer' }}>
               <div style={{ fontSize:'1.6rem', marginBottom:8 }}>{card.icon}</div>
               <div style={{ fontFamily:'var(--font-display)', fontSize:'2rem', fontWeight:700, color:card.color, lineHeight:1, marginBottom:6 }}>{card.count}</div>
               <div style={{ fontSize:'0.7rem', color:'var(--text3)', textTransform:'uppercase', letterSpacing:'0.1em' }}>{card.label}</div>
@@ -56,7 +56,7 @@ export default async function AdminOverviewPage() {
         </div>
         <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(140px, 1fr))', gap:10 }}>
           {quickLinks.map(l => (
-            <Link key={l.href} href={l.href} className="quick-link" style={{ background:'var(--surface2)', border:'1px solid var(--border)', color:'var(--text2)', padding:'11px 14px', borderRadius:'var(--radius-sm)', fontSize:'0.83rem', fontWeight:500, textDecoration:'none', transition:'all 0.25s ease', display:'block', textAlign:'center' }}>
+            <Link key={l.href} href={l.href} className="quick-link" style={{ background:'var(--surface2)', border:'1px solid var(--border)', color:'var(--text2)', boxShadow:'var(--card-shadow)', padding:'11px 14px', borderRadius:'var(--radius-sm)', fontSize:'0.83rem', fontWeight:500, textDecoration:'none', transition:'all 0.25s ease', display:'block', textAlign:'center' }}>
               {l.label}
             </Link>
           ))}
@@ -78,8 +78,8 @@ export default async function AdminOverviewPage() {
       </div>
 
       <style>{`
-        .overview-card:hover { border-color:var(--border2)!important; transform:translateY(-3px)!important; box-shadow:0 8px 24px rgba(0,0,0,0.2)!important; }
-        .quick-link:hover { border-color:var(--border2)!important; color:var(--text)!important; background:var(--surface3)!important; }
+        .overview-card:hover { border-color:var(--border2)!important; transform:translateY(-3px)!important; box-shadow:var(--card-shadow-hover)!important; }
+        .quick-link:hover { border-color:var(--border2)!important; color:var(--text)!important; background:var(--surface3)!important; box-shadow:var(--card-shadow-hover)!important; }
       `}</style>
     </div>
   )

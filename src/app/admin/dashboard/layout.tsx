@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { isAdminAuthenticated } from '@/lib/auth'
 import AdminSidebar from '@/components/admin/AdminSidebar'
+import ThemeToggle from '@/components/ThemeToggle'
 
 export default async function AdminDashboardLayout({ children }: { children: React.ReactNode }) {
   const authed = await isAdminAuthenticated()
@@ -31,10 +32,12 @@ export default async function AdminDashboardLayout({ children }: { children: Rea
             }}>Dashboard</span>
           </div>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <ThemeToggle />
             <a href="/" target="_blank" rel="noopener noreferrer" style={{
               background: 'var(--surface2)', border: '1px solid var(--border)',
               color: 'var(--text2)', padding: '8px 18px', borderRadius: 50,
               fontSize: '0.82rem', fontWeight: 500, textDecoration: 'none',
+              transition: 'var(--transition)',
             }}>
               ↗ View Site
             </a>

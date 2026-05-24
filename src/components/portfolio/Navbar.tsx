@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import ThemeToggle from '@/components/ThemeToggle'
 
 const NAV_LINKS = [
   { label: 'About',      href: '#about' },
@@ -44,7 +45,7 @@ export default function Navbar({ name }: { name: string }) {
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: '18px 48px',
-        background: scrolled ? 'rgba(5,5,15,0.92)' : 'transparent',
+        background: scrolled ? 'var(--nav-bg)' : 'transparent',
         backdropFilter: scrolled ? 'blur(24px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(24px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
@@ -86,10 +87,13 @@ export default function Navbar({ name }: { name: string }) {
               </a>
             )
           })}
+          <div style={{ marginLeft: 16, marginRight: 8, display: 'flex', alignItems: 'center' }}>
+            <ThemeToggle />
+          </div>
           <a href="#contact" style={{
             marginLeft: 8,
             background: 'linear-gradient(135deg, var(--accent), var(--accent3))',
-            color: 'white', padding: '9px 22px', borderRadius: '50px',
+            color: 'white', padding: '9px 22px', borderRadius: 50,
             fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none',
             boxShadow: '0 4px 20px var(--glow)',
             transition: 'transform 0.25s ease, box-shadow 0.25s ease',
@@ -106,46 +110,52 @@ export default function Navbar({ name }: { name: string }) {
           </a>
         </div>
 
-        {/* Hamburger button */}
-        <button
-          onClick={() => setMobileOpen(o => !o)}
-          className="mobile-nav-toggle"
-          aria-label="Toggle menu"
-          style={{
-            display: 'none', flexDirection: 'column',
-            justifyContent: 'center', alignItems: 'center',
-            gap: 5, width: 44, height: 44,
-            background: 'var(--surface)', border: '1px solid var(--border2)',
-            borderRadius: '10px', cursor: 'pointer', zIndex: 201, padding: 10,
-          }}
-        >
-          <span style={{
-            display: 'block', width: 20, height: 2,
-            background: 'var(--text)', borderRadius: 2,
-            transformOrigin: 'center',
-            transition: 'transform 0.35s var(--ease), opacity 0.35s ease',
-            transform: mobileOpen ? 'translateY(7px) rotate(45deg)' : 'none',
-          }} />
-          <span style={{
-            display: 'block', width: 20, height: 2,
-            background: 'var(--text)', borderRadius: 2,
-            transition: 'opacity 0.2s ease',
-            opacity: mobileOpen ? 0 : 1,
-          }} />
-          <span style={{
-            display: 'block', width: 20, height: 2,
-            background: 'var(--text)', borderRadius: 2,
-            transformOrigin: 'center',
-            transition: 'transform 0.35s var(--ease), opacity 0.35s ease',
-            transform: mobileOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
-          }} />
-        </button>
+        {/* Mobile toggle and menu button */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div className="mobile-toggle-container" style={{ display: 'none', alignItems: 'center' }}>
+            <ThemeToggle />
+          </div>
+
+          <button
+            onClick={() => setMobileOpen(o => !o)}
+            className="mobile-nav-toggle"
+            aria-label="Toggle menu"
+            style={{
+              display: 'none', flexDirection: 'column',
+              justifyContent: 'center', alignItems: 'center',
+              gap: 5, width: 44, height: 44,
+              background: 'var(--surface)', border: '1px solid var(--border2)',
+              borderRadius: '10px', cursor: 'pointer', zIndex: 201, padding: 10,
+            }}
+          >
+            <span style={{
+              display: 'block', width: 20, height: 2,
+              background: 'var(--text)', borderRadius: 2,
+              transformOrigin: 'center',
+              transition: 'transform 0.35s var(--ease), opacity 0.35s ease',
+              transform: mobileOpen ? 'translateY(7px) rotate(45deg)' : 'none',
+            }} />
+            <span style={{
+              display: 'block', width: 20, height: 2,
+              background: 'var(--text)', borderRadius: 2,
+              transition: 'opacity 0.2s ease',
+              opacity: mobileOpen ? 0 : 1,
+            }} />
+            <span style={{
+              display: 'block', width: 20, height: 2,
+              background: 'var(--text)', borderRadius: 2,
+              transformOrigin: 'center',
+              transition: 'transform 0.35s var(--ease), opacity 0.35s ease',
+              transform: mobileOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
+            }} />
+          </button>
+        </div>
       </nav>
 
       {/* Mobile fullscreen menu */}
       <div style={{
         position: 'fixed', inset: 0, zIndex: 190,
-        background: 'rgba(5,5,15,0.97)',
+        background: 'var(--mobile-nav-bg)',
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
         display: 'flex', flexDirection: 'column',
@@ -219,6 +229,7 @@ export default function Navbar({ name }: { name: string }) {
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-nav-toggle { display: flex !important; }
+          .mobile-toggle-container { display: flex !important; }
           nav { padding: 14px 20px !important; }
         }
       `}</style>

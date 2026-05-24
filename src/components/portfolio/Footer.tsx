@@ -30,10 +30,10 @@ export default function Footer({ hero, about }: { hero: HeroData; about: AboutDa
         </div>
       </div>
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .footer-link:hover { color:var(--accent2)!important; }
         @media(max-width:600px) { footer > div { flex-direction:column; text-align:center; } footer { padding:36px 24px!important; } }
-      `}</style>
+      ` }} />
     </footer>
   )
 }
