@@ -15,9 +15,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Resend API key not configured' }, { status: 500 })
     }
 
-    // Fetch the owner's email from the about section to know where to send it
-    const { data: aboutData } = await supabase.from('about').select('email').single()
-    const ownerEmail = aboutData?.email || 'delivered@resend.dev' // fallback
+    // Under Resend's free tier, emails must be sent TO your registered account email (abdullahsherafzal2@gmail.com).
+    // If you verify a domain later, you can override this by adding CONTACT_RECEIVER_EMAIL in your Vercel settings.
+    const ownerEmail = process.env.CONTACT_RECEIVER_EMAIL || 'abdullahsherafzal2@gmail.com'
 
     // Send email using Resend REST API
     const res = await fetch('https://api.resend.com/emails', {
