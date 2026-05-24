@@ -26,21 +26,23 @@ export default function ContactSection({ contact, about }: ContactProps) {
     const e = validate()
     if (Object.keys(e).length) { setErrors(e); return }
     setSending(true)
-    // Call the new API route
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
       })
-      if (!res.ok) throw new Error('Failed to send')
-    } catch (error) {
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}))
+        throw new Error(errorData.error || 'Failed to send')
+      }
+      setSent(true)
+    } catch (error: any) {
       console.error(error)
-      alert("There was an error sending your message. Please try again or use the email link.")
+      alert(`There was an error sending your message: ${error.message || error}. Please try again or use the email link.`)
     } finally {
       setSending(false)
     }
-    setSent(true)
   }
 
   // Use contact-specific email/phone/location if set, otherwise fall back to about
@@ -48,11 +50,20 @@ export default function ContactSection({ contact, about }: ContactProps) {
   const displayPhone    = contact.phone    || about.phone
   const displayLocation = contact.location || about.location
 
+  // Helper to ensure external links have protocol
+  const formatExternalUrl = (url: string) => {
+    if (!url) return ''
+    if (url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('http://') || url.startsWith('https://')) {
+      return url
+    }
+    return `https://${url}`
+  }
+
   const contactCards = [
     { icon:'✉️', label:'Email',    value: displayEmail,    href:`mailto:${displayEmail}` },
     ...(displayPhone    ? [{ icon:'📞', label:'Phone',    value: displayPhone,    href:`tel:${displayPhone}` }]          : []),
     ...(displayLocation ? [{ icon:'📍', label:'Location', value: displayLocation, href: null }]                          : []),
-    ...(contact.calendly_url ? [{ icon:'📅', label:'Schedule a Call', value:'Book a time →', href: contact.calendly_url }] : []),
+    ...(contact.calendly_url ? [{ icon:'📅', label:'Schedule a Call', value:'Book a time →', href: formatExternalUrl(contact.calendly_url) }] : []),
   ]
 
   return (

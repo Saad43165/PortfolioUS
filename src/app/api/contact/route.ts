@@ -44,9 +44,10 @@ export async function POST(request: NextRequest) {
     })
 
     if (!res.ok) {
-      const errorData = await res.json()
+      const errorData = await res.json().catch(() => ({}))
       console.error('Resend error:', errorData)
-      return NextResponse.json({ error: 'Failed to send email' }, { status: 500 })
+      const resendError = errorData?.message || errorData?.error || 'Failed to send email'
+      return NextResponse.json({ error: resendError }, { status: 500 })
     }
 
     return NextResponse.json({ success: true })
