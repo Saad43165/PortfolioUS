@@ -78,7 +78,7 @@ export default function HeroSection({ hero, stats }: { hero: HeroData; stats: St
 
         {/* Available badge */}
         {hero.available_for_work && (
-          <div style={{ display:'inline-flex', alignItems:'center', gap:10, background:'rgba(16,185,129,0.07)', border:'1px solid rgba(16,185,129,0.28)', color:'#6ee7b7', fontSize:'0.75rem', fontWeight:600, fontFamily:'var(--font-mono)', padding:'9px 22px', borderRadius:'50px', marginBottom:32, letterSpacing:'0.1em', animation:'hFadeDown 0.8s var(--ease) both', boxShadow:'0 0 24px rgba(16,185,129,0.12)' }}>
+          <div style={{ display:'inline-flex', alignItems:'center', gap:10, background:'rgba(16,185,129,0.07)', border:'1px solid rgba(16,185,129,0.28)', color:'var(--success, #059669)', fontSize:'0.75rem', fontWeight:600, fontFamily:'var(--font-mono)', padding:'9px 22px', borderRadius:'50px', marginBottom:32, letterSpacing:'0.1em', animation:'hFadeDown 0.8s var(--ease) both', boxShadow:'0 0 24px rgba(16,185,129,0.12)' }}>
             <span style={{ width:8, height:8, borderRadius:'50%', background:'#10b981', animation:'hPulse 2s ease infinite', display:'inline-block', boxShadow:'0 0 8px #10b981' }} />
             Available for new opportunities
           </div>
@@ -92,7 +92,7 @@ export default function HeroSection({ hero, stats }: { hero: HeroData; stats: St
               <div style={{ position:'relative', display:'inline-block' }}>
                 <div style={{ position:'absolute', inset:-3, borderRadius:'50%', background:'linear-gradient(135deg, var(--accent), var(--accent3))', opacity:0.6, filter:'blur(6px)' }} />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={hero.avatar_url} alt={hero.name} style={{ width:100, height:100, borderRadius:'50%', objectFit:'cover', border:'3px solid var(--border2)', position:'relative', display:'block' }} />
+                <img src={hero.avatar_url} alt={hero.name} style={{ width:100, height:100, borderRadius:'50%', objectFit:'cover', objectPosition:'top', border:'3px solid var(--border2)', position:'relative', display:'block' }} />
               </div>
             </div>
           )}
