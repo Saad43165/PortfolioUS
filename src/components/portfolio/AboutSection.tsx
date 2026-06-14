@@ -32,7 +32,7 @@ export default function AboutSection({ about, hero }: AboutProps) {
               {about.profile_image_url ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={about.profile_image_url} alt="Profile" style={{
-                  width:'100%', aspectRatio:'4/5', objectFit:'cover',
+                  width:'100%', aspectRatio:'4/5', objectFit:'cover', objectPosition:'top',
                   borderRadius:22, display:'block', position:'relative', zIndex:1,
                   border:'1px solid var(--border2)',
                 }} />

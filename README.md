@@ -1,134 +1,59 @@
-# 🚀 Portfolio — Next.js + Supabase
+# Usman Hassan - Software Developer Portfolio
 
-A stunning, fully dynamic personal portfolio with a hidden admin dashboard. Built with Next.js 14, Supabase, TypeScript, and Framer-ready animations.
+A modern, highly performant, and fully static personal portfolio built with Next.js, React, and Tailwind CSS. It highlights my projects, experience, and skills as a Full Stack & Mobile App Developer, specifically focusing on Flutter and modern web technologies.
 
----
+## 🚀 Live Demo
+
+[View Live Portfolio](https://portfolious.vercel.app/) *(Update this once deployed to Vercel)*
 
 ## ✨ Features
 
-- **Beautiful animated portfolio** — hero, about, education, projects, skills, experience, contact
-- **Fully mobile-responsive** — looks great on all screen sizes
-- **Hidden admin dashboard** — accessible only at `/admin/login`, not linked anywhere on the public site
-- **Secure key authentication** — server-side cookie session, key stored in `.env.local` only
-- **Supabase backend** — real-time PostgreSQL, works without it too (falls back to defaults)
-- **Next.js ISR** — portfolio refreshes every 60s after admin saves
-- **TypeScript throughout** — fully typed
+- **Static Data Management:** Lightning-fast page loads with zero database dependencies.
+- **Modern UI/UX:** Styled using Tailwind CSS, featuring subtle animations, glassmorphism elements, and a clean, premium aesthetic.
+- **Fully Responsive:** Beautifully responsive across mobile, tablet, and desktop viewports.
+- **Easy Customization:** All personal data is centralized in the `src/lib/defaults.ts` file for effortless future updates.
 
----
+## 🛠 Tech Stack
 
-## 🗂 Project Structure
+- **Framework:** [Next.js](https://nextjs.org/) (App/Pages Router)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Deployment:** [Vercel](https://vercel.com/)
 
-```
-src/
-├── app/
-│   ├── (portfolio)/          # Public portfolio pages
-│   │   └── page.tsx          # Main portfolio page
-│   ├── admin/
-│   │   ├── login/            # Admin login (hidden from public)
-│   │   └── dashboard/        # Protected admin dashboard
-│   │       ├── hero/
-│   │       ├── about/
-│   │       ├── education/
-│   │       ├── projects/
-│   │       ├── skills/
-│   │       ├── experience/
-│   │       ├── contact/
-│   │       ├── stats/
-│   │       └── setup/
-│   └── api/admin/            # API routes (auth, save, logout)
-├── components/
-│   ├── portfolio/            # All public-facing sections
-│   └── admin/                # Admin sidebar, form fields
-├── lib/                      # Supabase client, data fetcher, auth utils
-├── hooks/                    # useSave hook
-├── types/                    # TypeScript interfaces
-└── styles/                   # Global CSS with design tokens
-```
+## 🏃‍♂️ Running Locally
 
----
+To run this project locally on your machine:
 
-## 🛠 Quick Start
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Saad43165/PortfolioUS.git
+   cd PortfolioUS
+   ```
 
-### 1. Install dependencies
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-```bash
-npm install
-```
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-### 2. Set up environment variables
+4. **Open the app**
+   Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-```bash
-cp .env.example .env.local
-```
+## 📝 Managing Content
 
-Edit `.env.local`:
+All portfolio data (Projects, Experience, Education, Skills, Contact Info) is statically managed. 
 
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://yourproject.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
-ADMIN_SECRET_KEY=your_strong_password_here
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-```
+To update the content:
+1. Open `src/lib/defaults.ts`.
+2. Edit the corresponding fields with your new details or image paths.
+3. Save the file, and the site will reflect the changes instantly!
 
-### 3. Run development server
+## 📬 Contact
 
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) for the portfolio.
-
----
-
-## 🔐 Admin Dashboard
-
-The admin dashboard is **completely hidden** from the public portfolio — no links, no buttons, no trace.
-
-**To access:**
-1. Navigate to `http://localhost:3000/admin/login` manually
-2. Enter the `ADMIN_SECRET_KEY` from your `.env.local`
-3. You'll get an 8-hour session cookie
-4. Edit any section and click **Save Changes**
-
-The portfolio auto-refreshes (ISR) within 60 seconds of saving.
-
----
-
-## 🗃 Supabase Setup
-
-See the **Setup** page inside the admin dashboard for step-by-step SQL and instructions.
-
-**Without Supabase:** The portfolio works perfectly with the default data in `src/lib/defaults.ts`. Just edit that file directly.
-
----
-
-## 🚀 Deploy to Vercel
-
-1. Push to GitHub
-2. Import project on [vercel.com](https://vercel.com)
-3. Add environment variables in Vercel project settings
-4. Deploy — your portfolio is live!
-
----
-
-## 🎨 Customization
-
-- **Colors/fonts**: Edit CSS variables in `src/styles/globals.css`
-- **Default data**: Edit `src/lib/defaults.ts`
-- **Add sections**: Create a new component in `src/components/portfolio/` and a new admin page in `src/app/admin/dashboard/`
-
----
-
-## 📦 Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Framework | Next.js 14 (App Router) |
-| Language | TypeScript |
-| Styling | CSS Variables + Tailwind |
-| Database | Supabase (PostgreSQL) |
-| Auth | Server-side cookies + middleware |
-| Fonts | Cormorant Garamond + Syne + JetBrains Mono |
-| Deployment | Vercel |
-"# portfolio" 
-"# portfolio" 
+- **Email:** musmanhassan942@gmail.com
+- **Phone:** +92 313 0818121 / 0344 5107807
+- **Location:** i10/1 Islamabad, Pakistan
+- **GitHub:** [musmanhassan942](https://github.com/musmanhassan942)
