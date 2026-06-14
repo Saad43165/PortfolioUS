@@ -14,7 +14,7 @@ export const DEFAULT_DATA: PortfolioData = {
     cv_url: '',
   },
   about: {
-    bio: "I am currently pursuing my BS in Information Technology from Quaid e Azam University Islamabad. I am deeply passionate about creating modern web and mobile applications. Based in Islamabad, I focus on writing clean code and developing software that solves real-world problems. With a strong foundation in both frontend and backend development, along with mobile app development in Flutter, I am continuously learning and applying new technologies to build scalable, impactful solutions.",
+    bio: "I am an IT graduate with a BS in Information Technology from Quaid e Azam University Islamabad. I am deeply passionate about creating modern web and mobile applications. Based in Islamabad, I focus on writing clean code and developing software that solves real-world problems. With a strong foundation in both frontend and backend development, along with mobile app development in Flutter, I am continuously learning and applying new technologies to build scalable, impactful solutions.",
     tagline: 'Empowering businesses through scalable IT solutions.',
     location: 'i10/1 Islamabad Pakistan',
     email: 'musmanhassan942@gmail.com',
